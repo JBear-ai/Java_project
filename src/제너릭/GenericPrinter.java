@@ -1,6 +1,6 @@
 package 제너릭;
 
-public class GenericPrinter<T> {
+public class GenericPrinter<T extends Material> { // 자료형에 대한 제약
     private T material;
 
     public T getMaterial(){
@@ -17,8 +17,13 @@ public class GenericPrinter<T> {
     }
 }
 
+abstract class Material{
+    public abstract void doPrinting();
+}
+
+
 // 재료가 분말
-class Power{
+class Power extends Material{
     public void doPrinting(){
         System.out.println("Power 재료로 출력");
     }
@@ -29,7 +34,7 @@ class Power{
 }
 
 // 재료가플라스틱
-class Plastic{
+class Plastic extends Material{
     public void doPrinting(){
         System.out.println("플라스틱 재료");
     }
@@ -39,7 +44,7 @@ class Plastic{
     }
 }
 
-class Nylon{
+class Nylon extends Material{
     public void doPrinting(){
         System.out.println("나일론 재료");
     }
